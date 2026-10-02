@@ -18,6 +18,7 @@ const DEFAULT_GST_INCLUSIVE = true;
 
 const DEMO_PRODUCTS: Product[] = DEFAULT_CATALOG.map((p) => ({
   ...p,
+  tag: p.tag === "BESTSELLER" ? "BESTSELLER" : p.tag === "NEW" ? "NEW" : "",
   image: String((p as any).image ?? "/women-1.jpg"),
   gallery: Array.isArray((p as any).gallery) && (p as any).gallery.length
     ? (p as any).gallery.map((image: unknown) => String(image)).filter(Boolean).slice(0, 5)
@@ -26,16 +27,16 @@ const DEMO_PRODUCTS: Product[] = DEFAULT_CATALOG.map((p) => ({
   gstRate: DEFAULT_GST_RATE,
   gstInclusive: DEFAULT_GST_INCLUSIVE,
   sizeStock: p.sizeStock || {},
-  stock: Object.values(p.sizeStock || {}).reduce((sum, qty) => sum + Number(qty || 0), 0) || Number(p.stock || 0),
+  stock: Object.values(p.sizeStock || {}).reduce((sum: number, qty: number) => sum + Number(qty || 0), 0) || Number(p.stock || 0),
 }));
 
 function normalizeProduct(product:any):Product {
   const sizes=Array.isArray(product?.sizes)&&product.sizes.length?product.sizes.map((s:any)=>String(s).trim()).filter(Boolean):["M"];
   const incoming=product?.sizeStock&&typeof product.sizeStock==="object"?product.sizeStock:{};
   const sizeStock:Record<string,number>={};
-  sizes.forEach(size=>{const n=Number(incoming[size]);sizeStock[size]=Number.isFinite(n)&&n>=0?Math.floor(n):0;});
+  sizes.forEach((size: string)=>{const n=Number(incoming[size]);sizeStock[size]=Number.isFinite(n)&&n>=0?Math.floor(n):0;});
   if(Object.keys(incoming).length===0&&Number(product?.stock)>0) sizeStock[sizes[0]]=Math.floor(Number(product.stock));
-  const stock=sizes.reduce((sum,size)=>sum+Number(sizeStock[size]||0),0);
+  const stock=sizes.reduce((sum: number,size: string)=>sum+Number(sizeStock[size]||0),0);
   const gstRate = Number.isFinite(Number(product?.gstRate)) && Number(product.gstRate) >= 0
     ? Number(product.gstRate)
     : DEFAULT_GST_RATE;

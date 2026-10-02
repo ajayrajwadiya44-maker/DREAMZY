@@ -28,6 +28,7 @@ type SavedAddress = {
 type Order = {
   id?: string;
   orderNumber?: string;
+  invoiceNumber?: string;
   total?: number;
   status?: string;
   createdAt?: string;

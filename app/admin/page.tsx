@@ -59,13 +59,13 @@ function normalizeProduct(raw: any): Product {
       : {};
 
   const sizeStock: Record<string, number> = {};
-  sizes.forEach((size) => {
+  sizes.forEach((size: string) => {
     const value = Number(incoming[size]);
     sizeStock[size] = Number.isFinite(value) && value >= 0 ? Math.floor(value) : 0;
   });
 
   const stock = sizes.reduce(
-    (sum, size) => sum + Number(sizeStock[size] || 0),
+    (sum: number, size: string) => sum + Number(sizeStock[size] || 0),
     0
   );
 

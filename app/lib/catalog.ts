@@ -41,7 +41,10 @@ export const DEFAULT_CATALOG: CatalogProduct[] = [
 const CATALOG_VERSION = "dreamzy-product-page-v5";
 
 function buildSizeStock(product: any): Record<string, number> {
-  const sizes = Array.isArray(product?.sizes) && product.sizes.length ? product.sizes.map(String) : ["M"];
+  const sizes: string[] =
+    Array.isArray(product?.sizes) && product.sizes.length
+      ? product.sizes.map((value: unknown) => String(value))
+      : ["M"];
   const incoming = product?.sizeStock && typeof product.sizeStock === "object" ? product.sizeStock : {};
   const hasIncoming = Object.keys(incoming).length > 0;
   const total = Math.max(0, Number(product?.stock) || 0);
@@ -65,8 +68,14 @@ function buildSizeStock(product: any): Record<string, number> {
 
 function normalizeCatalogProduct(product: any): CatalogProduct {
   const sizeStock = buildSizeStock(product);
-  const sizes = Array.isArray(product?.sizes) && product.sizes.length ? product.sizes.map(String) : Object.keys(sizeStock);
-  const stock = sizes.reduce((sum, size) => sum + Number(sizeStock[size] || 0), 0);
+  const sizes: string[] =
+    Array.isArray(product?.sizes) && product.sizes.length
+      ? product.sizes.map((value: unknown) => String(value))
+      : Object.keys(sizeStock);
+  const stock = sizes.reduce(
+    (sum: number, size: string) => sum + Number(sizeStock[size] || 0),
+    0
+  );
   return { ...product, sizes, sizeStock, stock };
 }
 

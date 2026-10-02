@@ -501,25 +501,32 @@ export default function CartPage() {
       const cart: CartItem[] = Array.isArray(parsed) ? parsed : [];
 
       const catalog = getCatalog();
-      const validated = cart
-        .map((item) => {
-          const productId = String(item.productId || item.id.split("-")[0]);
-          const product = catalog.find((entry: any) => String(entry.id) === productId);
-          const available = getAvailableStock(item);
-          if (!product) return null;
-          return {
+      const validated: CartItem[] = cart.flatMap((item): CartItem[] => {
+        const productId = String(item.productId || item.id.split("-")[0]);
+        const product = catalog.find((entry: any) => String(entry.id) === productId);
+
+        if (!product) return [];
+
+        const available = getAvailableStock(item);
+        const quantity =
+          available > 0
+            ? Math.min(Math.max(1, Number(item.quantity || 1)), available)
+            : 0;
+
+        if (quantity <= 0) return [];
+
+        return [
+          {
             ...item,
-            productId: product.id,
-            name: product.name,
-            price: Number(product.price),
-            image: product.image,
-            quantity:
-              available > 0
-                ? Math.min(Math.max(1, Number(item.quantity || 1)), available)
-                : 0,
-          };
-        })
-        .filter((item): item is CartItem => Boolean(item) && item.quantity > 0);
+            productId: String(product.id ?? productId),
+            name: String(product.name ?? item.name),
+            price: Number(product.price ?? item.price),
+            image: String(product.image ?? item.image),
+            size: String(item.size ?? ""),
+            quantity,
+          },
+        ];
+      });
 
       setItems(validated);
 
@@ -634,7 +641,7 @@ export default function CartPage() {
   const gstAmount = subtotal - taxableSubtotal;
 
   // DREAMZY: free shipping on every order.
-  const shipping = 0;
+  const shipping: number = 0;
   const total = subtotal + shipping;
 
   if (!loaded) {

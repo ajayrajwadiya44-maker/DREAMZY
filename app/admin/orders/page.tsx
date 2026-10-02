@@ -691,6 +691,7 @@ export default function AdminOrdersPage() {
   const [loaded, setLoaded] = useState(false);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("ALL");
+  const [, setMessage] = useState("");
 
   function refreshOrders() {
     setOrders(readOrders());

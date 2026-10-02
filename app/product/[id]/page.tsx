@@ -29,10 +29,11 @@ type Review = {
   review: string;
   createdAt: string;
   verifiedPurchase: boolean;
+  visible?: boolean;
 };
 
 function normalizeProduct(raw: any): Product {
-  const sizes =
+  const sizes: string[] =
     Array.isArray(raw?.sizes) && raw.sizes.length
       ? raw.sizes.map((s: any) => String(s).trim()).filter(Boolean)
       : ["M"];
