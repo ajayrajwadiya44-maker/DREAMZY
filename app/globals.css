@@ -1,0 +1,586 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap');
+
+:root {
+  --cream: #f8f1eb;
+  --soft-pink: #ead5d0;
+  --rose: #b98585;
+  --burgundy: #552f35;
+  --dark: #282124;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--dark);
+  font-family: "DM Sans", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248, 241, 235, 0.96);
+  border-bottom: 1px solid rgba(85, 47, 53, 0.12);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: auto;
+  height: 82px;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  letter-spacing: -1px;
+  color: var(--burgundy);
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.nav a:hover {
+  opacity: 0.6;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.header-actions button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.hero {
+  min-height: 720px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(
+      rgba(248, 241, 235, 0.55),
+      rgba(248, 241, 235, 0.75)
+    ),
+    url("/hero.jpg") center / cover;
+}
+
+.hero-content {
+  max-width: 800px;
+  padding: 60px 25px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--burgundy);
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(52px, 7vw, 92px);
+  font-weight: 400;
+  line-height: 1;
+  margin: 0 0 30px;
+  color: var(--burgundy);
+}
+
+.hero-text {
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: auto;
+}
+
+.hero-buttons {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-buttons a,
+.story-section a,
+.kids-content a,
+.instagram-section a {
+  display: inline-block;
+  padding: 15px 28px;
+  background: var(--burgundy);
+  color: white;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.collection-section,
+.products-section,
+.why-section {
+  max-width: 1400px;
+  margin: auto;
+  padding: 110px 40px;
+}
+
+.section-heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 60px;
+}
+
+.section-heading h2,
+.story-section h2,
+.kids-content h2,
+.instagram-section h2,
+.newsletter h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+  color: var(--burgundy);
+}
+
+.section-heading h2 {
+  font-size: 48px;
+  margin: 0 0 20px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.category-card {
+  min-height: 600px;
+  padding: 45px;
+  display: flex;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+}
+
+.women-card {
+  background:
+    linear-gradient(transparent, rgba(40, 33, 36, 0.55)),
+    url("/women.jpg") center / cover;
+}
+
+.satin-card {
+  background:
+    linear-gradient(transparent, rgba(40, 33, 36, 0.55)),
+    url("/satin.jpg") center / cover;
+}
+
+.category-card h3 {
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.category-card a {
+  color: white;
+  font-size: 11px;
+  letter-spacing: 2px;
+  border-bottom: 1px solid white;
+  padding-bottom: 5px;
+}
+
+.kids-section {
+  min-height: 650px;
+  display: flex;
+  align-items: center;
+  padding: 80px;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(248, 241, 235, 0.95),
+      rgba(248, 241, 235, 0.25)
+    ),
+    url("/kids.jpg") center / cover;
+}
+
+.kids-content {
+  max-width: 500px;
+}
+
+.kids-content h2 {
+  font-size: 60px;
+  margin: 0 0 20px;
+}
+
+.products-section {
+  background: var(--white);
+  max-width: none;
+}
+
+.product-grid {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.product-image {
+  height: 430px;
+  background: #eee2dc;
+  position: relative;
+}
+
+.product-image span {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--white);
+  padding: 7px 10px;
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.product-info {
+  padding: 18px 0 30px;
+}
+
+.product-info h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.product-info p {
+  margin: 0;
+  color: var(--burgundy);
+}
+
+.story-section {
+  max-width: 1400px;
+  margin: auto;
+  padding: 130px 40px;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.story-section > div {
+  max-width: 600px;
+}
+
+.story-section h2 {
+  font-size: 58px;
+  line-height: 1.1;
+}
+
+.story-section p {
+  line-height: 1.8;
+  color: #62585a;
+}
+
+.why-section {
+  background: var(--soft-pink);
+  max-width: none;
+}
+
+.features {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  text-align: center;
+}
+
+.features span {
+  font-size: 34px;
+  color: var(--burgundy);
+}
+
+.features h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.features p {
+  color: #62585a;
+}
+
+.instagram-section {
+  text-align: center;
+  padding: 120px 30px;
+}
+
+.instagram-section h2 {
+  font-size: 55px;
+}
+
+.newsletter {
+  background: var(--burgundy);
+  color: white;
+  text-align: center;
+  padding: 100px 30px;
+}
+
+.newsletter .eyebrow,
+.newsletter h2 {
+  color: white;
+}
+
+.newsletter h2 {
+  font-size: 55px;
+}
+
+.newsletter-form {
+  max-width: 550px;
+  margin: 35px auto 0;
+  display: flex;
+}
+
+.newsletter-form input {
+  flex: 1;
+  border: 0;
+  padding: 18px;
+}
+
+.newsletter-form button {
+  border: 0;
+  background: white;
+  color: var(--burgundy);
+  padding: 0 25px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.footer {
+  background: #241b1d;
+  color: white;
+  padding: 80px 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 35px;
+}
+
+.footer h4 {
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.footer a {
+  display: block;
+  margin: 13px 0;
+  color: #d9cfd0;
+  font-size: 13px;
+}
+
+.copyright {
+  background: #191315;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+}
+
+
+/* DREAMZY responsive product cards */
+.product-card {
+  display: block;
+  min-width: 0;
+  background: var(--white);
+  overflow: hidden;
+}
+
+.product-image {
+  height: 430px;
+  width: 100%;
+  background: #eee2dc;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-image .tag {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--white);
+  padding: 7px 10px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.product-image .heart {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--white);
+  font-size: 18px;
+  color: var(--burgundy);
+  z-index: 2;
+}
+
+.product-info {
+  padding: 18px 14px 24px;
+}
+
+.product-name {
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 500;
+  margin: 0 0 7px;
+}
+
+.product-info .price {
+  margin: 0;
+  color: var(--burgundy);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+  }
+
+  .header-inner {
+    padding: 0 20px;
+  }
+
+  .category-grid,
+  .product-grid,
+  .features,
+  .footer {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .collection-section,
+  .products-section,
+  .story-section {
+    padding: 55px 10px;
+  }
+
+  .category-grid,
+  .features,
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mobile storefront: keep the existing DREAMZY look, with two products per row. */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+  }
+
+  .product-card {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .product-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 0.78;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-image .tag {
+    top: 8px;
+    left: 8px;
+    padding: 5px 7px;
+    font-size: 7px;
+  }
+
+  .product-image .heart {
+    top: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+
+  .product-info {
+    padding: 9px 8px 12px;
+  }
+
+  .product-name {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .product-info .price {
+    font-size: 10px;
+  }
+
+  .category-card {
+    min-height: 480px;
+  }
+
+  .kids-section {
+    padding: 60px 25px;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-form button {
+    padding: 17px;
+  }
+}
